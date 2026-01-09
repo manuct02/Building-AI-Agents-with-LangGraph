@@ -85,6 +85,5 @@ result = react_graph.invoke(input=inputs, config=config)
 # AQUÍ: Imprimir correctamente los mensajes
 print("\n=== MESSAGES ===")
 for m in result["messages"]:
-    m.pretty_print()
-    
+    m.pretty_print()   
 

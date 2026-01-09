@@ -86,6 +86,42 @@ Algunas preguntas no tienen rspuestas exactas en una base de datos. Las bases de
 
 Rag es un patrón, no una herramienta. La recuperación puede usar SQL, búsqueda por palabras clave o ombinaciones de todo. Los agentes (como el que hicimos de hospitality) combinan enfoques: usan SQL para filtrar y búsqueda vectorial para ordenar resultados semánticamente. Este modelo híbrido brinda a los agentes la capacidad de razonar tanto sobre la estructura como sobre el significado de los datos.
 
+## 3. **RAG** Generación Aumentada por recuperación agéntica
 
+Siguen un patrón simple: reciben una consulta, recuperan algunos documentos y generan una respuesta.
+
+Esto funciona para preguntas sencillas, pero resulta insuficiente en escenarios más complejos. El RAG agéntico mejora esto al dotar a los agentes con la capacidad de reflexionar, reintentar y refinar, transformando la recuperación de una herramienta estática en una parte activa del ciclo de razonamiento del agente.
+
+#### **Recuperación**
+
+El Rag de tooooda la via recupera y sigue con su vida, el agéntico en cambio valora la calidad de lo que recupera:
+
+ - El agente evalúa si los documentos son relevantes.
+ - Identifica información faltante
+ - Reformula las consultas si es necesario
+ - Repite la recuperación y ajusta las estrategias antes de responder
+
+#### **Estudio de Caso: Fallo de ZIllow Offers**
+
+Un RAG simple podría resumir que el algoritmo de vivienda de *Zillow* falló debido a mercados impredecibles. Sin embargo, un RAG agéntico:
+
+- Detectaría vacíos en la recuperación inicial
+- Reflexionaría sobre lo que falta (por ejemplo, supuestos algoritmos, bucles de retroalimentación)
+- Reformularía la consulta para enfocarse en fallas técnicas y estrategia de negocio 
+- Recuperaría mejores datos y produciría una explicación en capas
+
+#### **Planificación y Flujos de Trabajo Flexibles**
+
+Los agentes RAG agénticos planifican:
+- Cuándo recuperar
+- Qué recuperar (definiciones, contexto, evidencias)
+- Cómo integrar el contexto recuperado a través de múltiples pasos
+
+Los agentes también deben ser capaces de inspeccionar sus resultados:
+- ¿Coinciden con las palabras clave de la consulta?
+- ¿Responden directamente al "qué" o "por qué"¿
+- ¿Puede cada afirmación respaldarse con una fuente específica?
+
+Los frmaworks pueden incluir métricas como **fidelidad** y **relevancia**. De hecho el que hice yo los tenía
 
 
