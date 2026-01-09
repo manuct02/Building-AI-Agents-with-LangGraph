@@ -55,3 +55,41 @@ workflow.add_node("dba_tools", dba_llm_with_tools)
 ```python
 def messages_builder(state):
     return {"messages": [SystemMessage(...), HumanMessage(content=state.user_query)]}
+```
+
+- Se añaden estos dos nodos (`messages_builder` y `dba_agent`) al workflow.
+
+### 5. Routing Logic
+
+- Una función de routing examina el mensaje más reciente:
+  - Si el mensaje incluye `tool_call`, el workflow routea hacia `dba_tools`.
+  - De otra forma, termina.
+
+- Los resultados tras la ejecución de la tool loopean back hacia el agente para futuros razonamientos si es necesario.
+
+```python
+def router(state):
+    last_msg= state["messages"][-1]
+    return "dba_tools" if last_msg.tool_calls else "end"
+```
+
+- Edges se definen para formar un bucle:
+`start -> messages_builder -> dba_agent -> dba_tools -> dba_agent`, hasta que no se usen tools.
+
+### 6. Ejecución y testing
+- EL workflow se compila y visualiza.
+- Una query de test se inyecta: *"How many Dell XPS 15 were sold?"*
+- El sistema procesa la query siguiendo los siguientes pasos:
+  - a. Lista las tablas disponibles
+  - b. Recupera el esquema para la tabla relevante (`sales`)
+  - c. Genera y ejecuta la query:
+  ```SQL
+  SELECT SUM(quantity) FROM sales WHERE model = 'Dell XPS 15' ;
+  ```
+  - Devuelve un resultado vía un AI message.
+
+- Los logs deben confirmar el uso de las tools y pasos intermedios , asegurando el funcionamiento del workflow como debe ser.
+
+## Toolkit
+
+Por lo visto las herramientas están creadas en otro script, vamos a construirlas en el `sql_toolkit.py`.
