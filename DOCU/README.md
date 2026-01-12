@@ -124,4 +124,60 @@ Los agentes también deben ser capaces de inspeccionar sus resultados:
 
 Los frmaworks pueden incluir métricas como **fidelidad** y **relevancia**. De hecho el que hice yo los tenía
 
+## 4. Human-in-the-loop y Observabilidad
+
+La **transparencia y el control** son esenciales . 
+- La **observabilidad** ayuda a **monitorear**, **interpretar** y **optimizar**.
+- El **Human in the loop (HTL)** asegura la **supervisión** y **corrección de errores** en escenarios críticos.
+
+#### **Visibilidad inicial**
+
+- **El debugging básico empieza printeando los outputs**, permitiendo:
+  - Observar las respuestas del agente a diferentes outputs.
+  - Identificar errores o inconsistencias.
+  - Iterar y refinar la lógica.
+  - Es útil para los **early-stage development**.
+
+#### **Introduciendo el Human-in-the-loop**
+
+Los mecanismos de HITL permiten a los humanos:
+- **Interrumpir y aprobar una acción** antes de la ejecución.
+- **Validar outputs** para prevenir errores.
+- **Modificar el estado del agente** en tiempo real para corregir malinterpretaciones.
+
+**Revisar los checkpoints**.
+
+#### **Observabilidad avanzada para Producción de Sistemas**
+
+Para deployments a larga escala, la **observabilidad refinada** asegura que los agentes resulten **eficientes y confiables**
+
+La observabilidad se basa en tres técnicas:
+ - 1 - **Métricas**: monitorear los **indicadores de performance** como tiempo de respuesta, precisión y uso de tokens.
+ - 2 - **Logs**: capturar los **records detallados** de acciones del agente, errores e interacciones.
+ - 3 - **Tracing**: trackea la **secuencia de acciones** tomadas por el agente.
+
+ ## 5. Fiabilidad y Evaluación del Agente
+
+Hacer agentes es fácil, el reto viene a la hora de hacerlos predecibles, consistentes y fiables.
+
+#### **Definir el éxito con métricas**
+
+Los agentes necesitan criterios de éxito medibles:
+- **Accuracy**: son las respuestas **correctas y relevantes**? Cada cuánto ocurren errores?
+- **Efficiency**: completa el agente tareas **rápidamente y con el mínimo uso de resource**?
+- **Optimización de coste**: está la performance optimizada sin usar **excesivas llamadas a la API**, **tokens** o **coste computacional**?
+
+#### **Evaluación vs Testing**
+- El **Testing** identifica **defectos y errores funcionales**.
+- La **Evaluation** se encarga del chequeo de la **calidad general**, determinando cómo de bien el agente actúa su tarea.
+
+#### **Observabilidad: Monitorear Agentes en producción**
+
+La fiabilidad requiere **ongoing monitoring** para detectar fallos y mejorar la performance.
+
+Las técnicas clave de la observabilidad incluyen:
+
+- **Tracking KPIs**: medir constantemente la **accuracy**, **efficiency** y **ratios de error**.
+- **Logging y Tracing**: guardar **fallos y éxitos** para refinar los workflows.
+- **Transparencia de decisión**: monitorear cómo el agente hace las elecciones y elige acciones.
 
