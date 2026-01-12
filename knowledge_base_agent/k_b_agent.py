@@ -89,7 +89,7 @@ display(Image(graph.get_graph().draw_mermaid_png()))
 
 # 6. Invocar el workflow con una query
 
-output= graph.invoke({"question": "Qué son los modelos Open source?"})
+output= graph.invoke({"question": "Qué es el databrick?"})
 
 for message in output["messages"]:
     message.pretty_print()
